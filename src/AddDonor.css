@@ -1,0 +1,41 @@
+.centerFlex {
+    margin-top: 6%;
+    align-items:center;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    /*margin-bottom: 5%;*/
+    /*height:100%;*/
+  }
+
+.formContainer{
+padding: 2% 5% 2% 5%;
+border:2px solid red;
+}
+
+input{
+    width:100%;
+    background-color:bisque
+}
+
+input:hover{
+    background-color: darksalmon;
+}
+
+.form-control{
+    border-color: black;
+    border-width: 1px;
+}
+.form-control:focus{
+box-shadow: none;
+border-color: blue;
+}
+
+
+select{
+    width: 100%;
+}
+
+body{
+    height:100%;
+}
