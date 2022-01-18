@@ -6,6 +6,7 @@ import Home from "./Home";
 import About from "./About";
 import AddDonor from "./AddDonor";
 import reportWebVitals from "./reportWebVitals";
+import DonorInformation from "./DonorInformation";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -14,6 +15,7 @@ ReactDOM.render(
       <Route path="home" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="addUser" element={<AddDonor />} />
+      <Route path="donorInfo" element={<DonorInformation />} />
       <Route
         path="*"
         element={

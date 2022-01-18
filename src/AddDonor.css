@@ -1,5 +1,5 @@
 .centerFlex {
-    margin-top: 6%;
+    margin-top: 2%;
     align-items:center;
     display: flex;
     flex-direction: column;
@@ -13,22 +13,31 @@ padding: 2% 5% 2% 5%;
 border:2px solid red;
 }
 
+.mb-3 input{
+    width:15em;
+    background-color: white;
+}
+
+.mb-3 input:hover{
+    background-color: white;
+}
+
 input{
     width:100%;
-    background-color:bisque
+    background-color:bisque;
+    height:2.3em;
+   border:1px solid black;
 }
 
 input:hover{
     background-color: darksalmon;
 }
 
-.form-control{
-    border-color: black;
-    border-width: 1px;
-}
-.form-control:focus{
-box-shadow: none;
-border-color: blue;
+
+input:focus{
+border-color:  blue;
+border-width: 1.5px;
+outline: none;
 }
 
 

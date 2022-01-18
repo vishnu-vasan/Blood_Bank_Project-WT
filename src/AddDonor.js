@@ -17,6 +17,7 @@ export default function AddDonor() {
 
   const onSubmit = (data) => {
     console.log("------" + data.fname);
+    console.log("Hi");
     axios
       .post("http://localhost:7800/addUser", data)
       .then(function (response) {
@@ -35,7 +36,7 @@ export default function AddDonor() {
         <Form onSubmit={handleSubmit(onSubmit)}>
           
           <FormGroup>
-            <Input
+            <input
               type="text"
               placeholder="First name"
               {...register("fname", { required: true, maxLength: 50 })}
@@ -43,7 +44,7 @@ export default function AddDonor() {
           </FormGroup>
 
           <FormGroup>
-            <Input
+            <input
               type="text"
               placeholder="Last name"
               {...register("lname", { required: true, maxLength: 50 })}
@@ -51,7 +52,7 @@ export default function AddDonor() {
           </FormGroup>
 
           <FormGroup>
-            <Input
+            <input
               type="text"
               placeholder="Email"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
@@ -59,7 +60,7 @@ export default function AddDonor() {
           </FormGroup>
 
           <FormGroup>
-            <Input
+            <input
               type="tel"
               placeholder="Mobile number"
               {...register("mobile", {
@@ -71,6 +72,7 @@ export default function AddDonor() {
           </FormGroup>
 
           <FormGroup>
+          <center><Label>Blood Group : </Label></center>
             <select {...register("bgroup", { required: true })}>
               <option value="O">O</option>
               <option value="A">A</option>
@@ -79,8 +81,17 @@ export default function AddDonor() {
           </FormGroup>
 
           <FormGroup>
-            <input type="submit" />
+            <center><Label>Region : </Label></center>
+            <select {...register("area", { required: true })}>
+              <option value="North">North</option>
+              <option value="South">South</option>
+              <option value="East">East</option>
+              <option value = "West">West</option>
+            </select>{" "}
           </FormGroup>
+
+            <input type="submit" />
+          
 
         </Form>
       </div>

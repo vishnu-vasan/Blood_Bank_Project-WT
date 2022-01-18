@@ -11,7 +11,8 @@ export default function App() {
         }}
       >
         <Link to="/about">About</Link> | <Link to="/home">Home</Link> |{" "}
-        <Link to="/addUser">Add Donor</Link>
+        <Link to="/addUser">Add Donor</Link> | {" "}
+        <Link to = "/donorInfo">View Donors</Link>
         <Outlet />
       </nav>
     </div>

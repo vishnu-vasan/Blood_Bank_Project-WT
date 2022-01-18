@@ -36,10 +36,11 @@ app.post("/addUser", function (req, res) {
         req.body.email,
         req.body.mobile,
         req.body.bgroup,
+        req.body.area
       ],
     ];
     connection.query(
-      "INSERT INTO donors (fname,lname,email,mobile,bgroup) VALUES ?",
+      "INSERT INTO donors (fname,lname,email,mobile,bgroup,area) VALUES ?",
       [val],
       function (error, results, fields) {
         connection.release();
@@ -52,5 +53,48 @@ app.post("/addUser", function (req, res) {
     );
   });
 });
+
+app.get("/donorInfo", function (req, res) {
+  console.log("---inside get");
+  //var area = req.params.area;
+  //console.log(area); 
+  pool.getConnection(function (err, connection) {
+    if (err) {
+      console.log("connection issues");
+      res.status(500).send("DB connection error");
+    }
+    //console.log(req.params);
+    //if(area == "All")
+    connection.query(
+      "SELECT * from donors",
+      function (error, results, fields) {
+        connection.release();
+        if (error) {
+          console.log(error);
+          res.status(500).send(error);
+        }
+        res.send(results);
+        console.log(results);
+      }
+    );
+    /*else
+    {
+      connection.query(
+        `SELECT * from donors WHERE area='${area}'` ,
+        function (error, results, fields) {
+          connection.release();
+          if (error) {
+            console.log(error);
+            res.status(500).send(error);
+          }
+          res.send(results);
+          console.log(results);
+        }
+      );
+    }*/
+
+  });
+});
+
 
 app.listen(port, () => console.log(`example app listening on port ${port}!`));
