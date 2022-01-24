@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FormGroup, Label, Input, Button, Form } from "reactstrap";
 import "./AddDonor.css";
 
-export default function AddDonor() {
+export default function UpdateDonor() {
   const {
     register,
     handleSubmit,

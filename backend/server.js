@@ -36,7 +36,7 @@ app.post("/addUser", function (req, res) {
         req.body.email,
         req.body.mobile,
         req.body.bgroup,
-        req.body.area
+        req.body.area,
       ],
     ];
     connection.query(
@@ -57,7 +57,7 @@ app.post("/addUser", function (req, res) {
 app.get("/donorInfo", function (req, res) {
   console.log("---inside get");
   //var area = req.params.area;
-  //console.log(area); 
+  //console.log(area);
   pool.getConnection(function (err, connection) {
     if (err) {
       console.log("connection issues");
@@ -65,18 +65,15 @@ app.get("/donorInfo", function (req, res) {
     }
     //console.log(req.params);
     //if(area == "All")
-    connection.query(
-      "SELECT * from donors",
-      function (error, results, fields) {
-        connection.release();
-        if (error) {
-          console.log(error);
-          res.status(500).send(error);
-        }
-        res.send(results);
-        console.log(results);
+    connection.query("SELECT * from donors", function (error, results, fields) {
+      connection.release();
+      if (error) {
+        console.log(error);
+        res.status(500).send(error);
       }
-    );
+      res.send(results);
+      console.log(results);
+    });
     /*else
     {
       connection.query(
@@ -92,9 +89,21 @@ app.get("/donorInfo", function (req, res) {
         }
       );
     }*/
-
   });
 });
 
+app.delete("/deleteUser/:id", function (req, res) {
+  pool.getConnection(function (err, connection) {
+    if (err) throw err;
+    connection.query(
+      `DELETE FROM donors WHERE id = ${req.params.id}`,
+      function (error, results, fields) {
+        connection.release();
+        if (error) res.status(500).send(error);
+        res.send(results);
+      }
+    );
+  });
+});
 
 app.listen(port, () => console.log(`example app listening on port ${port}!`));
