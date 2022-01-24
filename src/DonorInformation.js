@@ -3,15 +3,21 @@ import axios, { Axios } from "axios";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "reactstrap";
+import { Outlet, Link } from "react-router-dom";
 
 import "./DonorInformation.css";
+import UpdateDonor from "./UpdateDonor";
 
-export default function DonorInformation() {
+export default function DonorInformation(props) {
   const [area, setArea] = useState("");
   const [details, setDetails] = useState(null);
   const [currArray, setCurrArray] = useState(null);
+  const [showUpdate, setShowUpdate] = useState(false);
+  const [donorId, setDonorId] = useState(null);
+  const [donor, setDonor] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(true);
   //setDetails("All");
-
+  var upd_donor;
   useEffect(() => {
     axios
       .get("http://localhost:7800/donorInfo")
@@ -26,8 +32,16 @@ export default function DonorInformation() {
   }, []);
 
   const updateUser = (id) => {
-    console.log("-------" + id);
+    setDonorId(id);
+    setShowUpdate(true);
+    upd_donor = currArray.filter((item) => {
+      console.log(id);
+      return item.id == id;
+    });
+    console.log("--" + upd_donor[0].id);
+    setDonor(upd_donor);
   };
+
   const deleteUser = (id) => {
     console.log("-------" + id);
     axios
@@ -55,6 +69,7 @@ export default function DonorInformation() {
 
     setCurrArray(array);
   };
+
   return (
     <div>
       <center>
@@ -104,23 +119,25 @@ export default function DonorInformation() {
                     <td>{item.mobile}</td>
                     <td>{item.bgroup}</td>
                     <td colSpan={5}>{item.area}</td>
-                    <td>
-                      {" "}
-                      <Button
-                        className="btn btn-warning"
-                        onClick={() => updateUser(item.id)}
-                      >
-                        Update
-                      </Button>{" "}
-                      {/* </td>
+                    {isAdmin && (
+                      <td>
+                        {" "}
+                        <Button
+                          className="btn btn-warning"
+                          onClick={() => updateUser(item.id)}
+                        >
+                          Update
+                        </Button>{" "}
+                        {/* </td>
                     <td> */}
-                      <Button
-                        className="btn btn-danger"
-                        onClick={() => deleteUser(item.id)}
-                      >
-                        Delete
-                      </Button>{" "}
-                    </td>
+                        <Button
+                          className="btn btn-danger"
+                          onClick={() => deleteUser(item.id)}
+                        >
+                          Delete
+                        </Button>{" "}
+                      </td>
+                    )}
                   </tr>
                 );
               })}
@@ -128,6 +145,7 @@ export default function DonorInformation() {
           </table>
         </center>
       )}
+      {showUpdate && <UpdateDonor id={donorId} donorData={donor} />}
     </div>
   );
 }

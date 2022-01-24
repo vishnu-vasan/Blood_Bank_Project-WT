@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FormGroup, Label, Input, Button, Form } from "reactstrap";
 import "./AddDonor.css";
 
-export default function UpdateDonor() {
+export default function UpdateDonor(props) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  console.log(props);
+  const id = props.id;
+  const [donorDetails, setDonorDetails] = useState(props.donorData[0]);
+  console.log("Received----" + id);
+  console.log("Received----" + donorDetails.fname);
   const onSubmit = (data) => {
     console.log("------" + data.fname);
     console.log("Hi");
     axios
-      .post("http://localhost:7800/addUser", data)
+      .put("http://localhost:7800/updateUser/" + id, data)
       .then(function (response) {
         console.log(response);
         window.location.reload(false);
@@ -24,11 +28,12 @@ export default function UpdateDonor() {
       .catch(function (error) {
         console.log(error);
       });
+    //window.location.reload(false);
   };
   console.log(errors);
   return (
     <div className="centerFlex">
-      <h2>Donate Blood</h2>
+      <h2>Update Donor Details</h2>
       <br />
       <div className="formContainer">
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -36,6 +41,7 @@ export default function UpdateDonor() {
             <input
               type="text"
               placeholder="First name"
+              defaultValue={donorDetails.fname}
               {...register("fname", { required: true, maxLength: 50 })}
             />
           </FormGroup>
@@ -44,6 +50,7 @@ export default function UpdateDonor() {
             <input
               type="text"
               placeholder="Last name"
+              value={donorDetails.lname}
               {...register("lname", { required: true, maxLength: 50 })}
             />{" "}
           </FormGroup>
@@ -52,6 +59,7 @@ export default function UpdateDonor() {
             <input
               type="text"
               placeholder="Email"
+              value={donorDetails.email}
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />{" "}
           </FormGroup>
@@ -60,6 +68,7 @@ export default function UpdateDonor() {
             <input
               type="tel"
               placeholder="Mobile number"
+              value={donorDetails.mobile}
               {...register("mobile", {
                 required: true,
                 minLength: 6,
@@ -72,7 +81,10 @@ export default function UpdateDonor() {
             <center>
               <Label>Blood Group : </Label>
             </center>
-            <select {...register("bgroup", { required: true })}>
+            <select
+              value={donorDetails.bgroup}
+              {...register("bgroup", { required: true })}
+            >
               <option value="O +ve">O +ve</option>
               <option value="O -ve">O -ve</option>
               <option value="A +ve">A +ve</option>
@@ -88,7 +100,10 @@ export default function UpdateDonor() {
             <center>
               <Label>Region : </Label>
             </center>
-            <select {...register("area", { required: true })}>
+            <select
+              value={donorDetails.area}
+              {...register("area", { required: true })}
+            >
               <option value="North">North</option>
               <option value="South">South</option>
               <option value="East">East</option>

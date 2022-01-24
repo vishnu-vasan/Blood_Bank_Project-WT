@@ -106,4 +106,22 @@ app.delete("/deleteUser/:id", function (req, res) {
   });
 });
 
+app.put("/updateUser/:id", function (req, res) {
+  console.log("inside put");
+  pool.getConnection(function (err, connection) {
+    if (err) res.status(500).send("DB connection error");
+    connection.query(
+      `UPDATE donors SET fname='${req.body.fname}',lname='${req.body.lname}',email='${req.body.email}',mobile=${req.body.mobile},bgroup='${req.body.bgroup}',area='${req.body.area}' WHERE id = ${req.params.id}`,
+      function (error, results, fields) {
+        connection.release();
+        if (error) {
+          console.log(error);
+          res.status(500).send(error);
+        }
+        res.send(results);
+      }
+    );
+  });
+});
+
 app.listen(port, () => console.log(`example app listening on port ${port}!`));

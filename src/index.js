@@ -27,6 +27,7 @@ ReactDOM.render(
         }
       />
       {/* </Route> */}
+      <Route render={() => <h1>404: not found</h1>} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")
