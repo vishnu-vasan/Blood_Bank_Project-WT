@@ -1,5 +1,5 @@
 import "./Home.css";
-
+import { Outlet, Link } from "react-router-dom";
 const Home = () => {
   var mybutton = document.getElementById("myBtn");
   window.onscroll = function () {
@@ -44,17 +44,17 @@ const Home = () => {
               </li>
               <li>
                 <b>
-                  <a href="#before">Before</a>
+                  <Link to="/addUser">Add Donor</Link>
                 </b>
               </li>
               <li>
                 <b>
-                  <a href="#after">After</a>
+                  <Link to="/donorInfo">View Donors</Link>
                 </b>
               </li>
               <li>
                 <b>
-                  <a href="#result">Result</a>
+                  <Link to="/login">Admin Login</Link>
                 </b>
               </li>
             </ul>

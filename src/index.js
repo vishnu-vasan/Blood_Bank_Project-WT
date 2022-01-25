@@ -13,7 +13,7 @@ import Login from "./Login";
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<Home />} />
       <Route path="home" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="addUser" element={<AddDonor />} />

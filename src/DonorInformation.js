@@ -30,7 +30,9 @@ export default function DonorInformation(props) {
       .catch(function (error) {
         console.log(error);
       });
-    if (window.sessionStorage.getItem("Admin123")) setIsAdmin(true);
+    // if (window.sessionStorage.getItem("Admin123")) setIsAdmin(true);
+    if (localStorage.getItem("googleid") && localStorage.getItem("gmailid"))
+      setIsAdmin(true);
   }, []);
 
   const updateUser = (id) => {
@@ -101,19 +103,38 @@ export default function DonorInformation(props) {
   };
 
   const logoutUser = () => {
-    window.sessionStorage.removeItem("Admin123");
+    // window.sessionStorage.removeItem("Admin123");
+    window.localStorage.removeItem("googleid");
+    window.localStorage.removeItem("gmailid");
     setIsAdmin(false);
     window.location.reload(false);
   };
   return (
     <div>
+      <div>
+        <Button
+          className="btn btn-success"
+          onClick={() => (window.location.href = "home")}
+          style={{ float: "left" }}
+        >
+          Go to Home
+        </Button>
+        {"\n"}
+      </div>
       {isAdmin && (
         <div>
-          <Button className="btn btn-secondary" onClick={() => logoutUser()}>
+          <Button
+            className="btn btn-secondary"
+            onClick={() => logoutUser()}
+            style={{ float: "right" }}
+          >
             Logout
-          </Button>{" "}
+          </Button>
+          {"\n"}
         </div>
       )}
+      <br />
+      <br />
       <center>
         <h2>Get Donors By Region and Blood Group</h2>
       </center>

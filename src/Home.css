@@ -2,6 +2,7 @@ body,
 section,
 .sub-header {
   margin-left: 150px;
+  background-image: url("./bg.jpg");
 }
 
 /*GOToTop button*/
