@@ -1,14 +1,12 @@
 import React from "react";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "reactstrap";
-import { Outlet, Link } from "react-router-dom";
-
 import "./DonorInformation.css";
 import UpdateDonor from "./UpdateDonor";
 
-export default function DonorInformation(props) {
+export default function DonorInformation() {
   const [area, setArea] = useState("");
   const [bgroup, setBgroup] = useState("");
   const [details, setDetails] = useState(null);
@@ -40,7 +38,7 @@ export default function DonorInformation(props) {
     setShowUpdate(true);
     upd_donor = currArray.filter((item) => {
       console.log(id);
-      return item.id == id;
+      return item.id === id;
     });
     console.log("--" + upd_donor[0].id);
     setDonor(upd_donor);
@@ -66,17 +64,17 @@ export default function DonorInformation(props) {
     //alert(val);
     /*showDonor(val);*/
     let array = details;
-    if (val != "All")
+    if (val !== "All")
       array = details.filter((item) => {
-        return item.area == val;
+        return item.area === val;
       });
 
-    if (bgroup != "All" && bgroup != "")
+    if (bgroup !== "All" && bgroup !== "")
       array = array.filter((item) => {
-        return item.bgroup == bgroup;
+        return item.bgroup === bgroup;
       });
 
-    if (array.length == 0) array = null;
+    if (array.length === 0) array = null;
 
     setCurrArray(array);
   };
@@ -87,17 +85,17 @@ export default function DonorInformation(props) {
     //alert(val);
     /*showDonor(val);*/
     let array = details;
-    if (val != "All")
+    if (val !== "All")
       array = details.filter((item) => {
-        return item.bgroup == val;
+        return item.bgroup === val;
       });
 
-    if (area != "All" && area != "")
+    if (area !== "All" && area !== "")
       array = array.filter((item) => {
-        return item.area == area;
+        return item.area === area;
       });
 
-    if (array.length == 0) array = null;
+    if (array.length === 0) array = null;
 
     setCurrArray(array);
   };
@@ -115,7 +113,7 @@ export default function DonorInformation(props) {
         <Button
           className="btn btn-success"
           onClick={() => (window.location.href = "home")}
-          style={{ float: "left" }}
+          style={{ float: "left", margin: "5px" }}
         >
           Go to Home
         </Button>
@@ -126,9 +124,21 @@ export default function DonorInformation(props) {
           <Button
             className="btn btn-secondary"
             onClick={() => logoutUser()}
-            style={{ float: "right" }}
+            style={{ float: "right", margin: "5px" }}
           >
             Logout
+          </Button>
+          {"\n"}
+        </div>
+      )}
+      {!isAdmin && (
+        <div>
+          <Button
+            className="btn btn-secondary"
+            onClick={() => (window.location.href = "login")}
+            style={{ float: "right", margin: "5px" }}
+          >
+            Admin Login
           </Button>
           {"\n"}
         </div>
@@ -168,7 +178,7 @@ export default function DonorInformation(props) {
         </div>
       </div>
       {!currArray ? (
-        area != "" ? (
+        area !== "" ? (
           <center>
             <div className="nothingMsg">No donors available</div>
           </center>

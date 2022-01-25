@@ -10,7 +10,6 @@ export default function App() {
           paddingBottom: "1rem",
         }}
       >
-        <Link to="/about">About</Link> | <Link to="/home">Home</Link> |{" "}
         <Link to="/addUser">Add Donor</Link> |{" "}
         <Link to="/donorInfo">View Donors</Link> |{" "}
         <Link to="/login">Admin Login</Link>

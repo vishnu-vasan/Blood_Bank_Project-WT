@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FormGroup, Label, Input, Button, Form } from "reactstrap";
+import { FormGroup, Label, Button, Form } from "reactstrap";
 import "./AddDonor.css";
 
 export default function AddDonor() {
@@ -32,7 +32,7 @@ export default function AddDonor() {
         <Button
           className="btn btn-success"
           onClick={() => (window.location.href = "home")}
-          style={{ float: "left" }}
+          style={{ float: "left", margin: "5px" }}
         >
           Go to Home
         </Button>

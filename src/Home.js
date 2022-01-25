@@ -1,5 +1,5 @@
 import "./Home.css";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 const Home = () => {
   var mybutton = document.getElementById("myBtn");
   window.onscroll = function () {

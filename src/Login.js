@@ -44,18 +44,16 @@
 // }
 
 import React, { Component } from "react";
-import axios, { Axios } from "axios";
-import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "reactstrap";
-import { Outlet, Link } from "react-router-dom";
-
 import "./DonorInformation.css";
-import UpdateDonor from "./UpdateDonor";
-import { GoogleLogout } from "react-google-login";
+// import UpdateDonor from "./UpdateDonor";
+// import { GoogleLogout } from "react-google-login";
 
 class Login extends Component {
   componentDidMount() {
+    if (localStorage.getItem("googleid") && localStorage.getItem("gmailid"))
+      window.location.href = "donorInfo";
     this.googleSDK();
     console.log("sfsfd");
   }
@@ -128,7 +126,7 @@ class Login extends Component {
           <Button
             className="btn btn-success"
             onClick={() => (window.location.href = "home")}
-            style={{ float: "left" }}
+            style={{ float: "left", margin: "5px" }}
           >
             Go to Home
           </Button>
@@ -137,7 +135,7 @@ class Login extends Component {
         <center style={{ padding: "8cm" }}>
           <div style={{ borderColor: "green" }}>
             <h2 className="text-left">Google Login</h2>
-            <button className="btn btn-success" ref="googleLoginBtn">
+            <button className="btn btn-outline-primary" ref="googleLoginBtn">
               Login with Google
             </button>
           </div>

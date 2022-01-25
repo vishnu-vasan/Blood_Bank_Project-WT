@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FormGroup, Label, Input, Button, Form } from "reactstrap";
+import { FormGroup, Label, Form } from "reactstrap";
 import "./AddDonor.css";
 
 export default function UpdateDonor(props) {
