@@ -8,6 +8,7 @@ import AddDonor from "./AddDonor";
 import UpdateDonor from "./UpdateDonor";
 import reportWebVitals from "./reportWebVitals";
 import DonorInformation from "./DonorInformation";
+import Login from "./Login";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Route path="addUser" element={<AddDonor />} />
       <Route path="updateUser" element={<UpdateDonor />} />
       <Route path="donorInfo" element={<DonorInformation />} />
+      <Route path="login" element={<Login />} />
       <Route
         path="*"
         element={

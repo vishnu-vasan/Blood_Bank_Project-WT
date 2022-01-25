@@ -1,72 +1,72 @@
 .area-filter {
-    color: black;
-    /*padding: 0 1rem;*/
-    margin-bottom: 1em;
-    position:sticky;
-    margin: 2% 35% auto 35%;
-  }
-  h2{
-    margin-top: 2%;
-  }
-  .area-filter__control {
-    display: flex;
-    /*width: 70%;*/
-    align-items:flex-end;
-    justify-content:space-around;
-    /*background-color:coral;*/
-    background-color: rgba(255, 127, 80, 0.562);
-    padding: 2%;
-    text-align: center;
-    /*margin: 1rem 0;
+  color: black;
+  /*padding: 0 1rem;*/
+  margin-bottom: 1em;
+  position: sticky;
+  margin: 2% 35% auto 35%;
+}
+h3 {
+  margin-top: 2%;
+}
+.area-filter__control {
+  display: flex;
+  /*width: 70%;*/
+  align-items: flex-end;
+  justify-content: space-around;
+  /*background-color:coral;*/
+  background-color: rgba(255, 127, 80, 0.562);
+  padding: 2%;
+  text-align: center;
+  /*margin: 1rem 0;
     margin-left:0;*/
-    border:0.1em solid black;
-  }
+  border: 0.1em solid black;
+}
 
-  .area-filter__control label{
-    /*margin-top: 1em;*/
-    margin-bottom: 0.5em;
-  }
-  
-  .area-filter__control button{
-    /*margin-top: 1em;*/
-    width: 25%;
-    float:right;
-    padding: auto 5% auto 5%;
-    margin-bottom: 0.35em;
-  }
-  .area-filter label {
-    font-weight: bold;
-    /*background-color: coral;*/
-    background-color: rgba(255, 127, 80, 0);
-  }
-  
-  .area-filter select {
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    /*float: right;*/
-    width:70%;
-    background-color: blanchedalmond;
-  }
+.area-filter__control label {
+  /*margin-top: 1em;*/
+  margin-bottom: 0.5em;
+}
 
-  .donorTable{
-    margin-top: 5%;
-    border:0.15em solid black;
-    width:80%;
-  }
+.area-filter__control button {
+  /*margin-top: 1em;*/
+  width: 25%;
+  float: right;
+  padding: auto 5% auto 5%;
+  margin-bottom: 0.35em;
+}
+.area-filter label {
+  font-weight: bold;
+  /*background-color: coral;*/
+  background-color: rgba(255, 127, 80, 0);
+}
 
-  
-  td,th{
-    /*margin: 5% 2% 2% 2%;*/
-    text-align: center;
-    /*padding: 2%;*/
-    border:0.1em solid black;
-    display: table-cell;
-  }
+.area-filter select {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  /*float: right;*/
+  width: 50%;
+  background-color: blanchedalmond;
+}
 
-  .nothingMsg{
-    background-color:darkgray;
-    padding: 2%;
-    color:aliceblue;
-    margin: 5% 35% auto 35%;
-    border:0.1em solid black;
-  }
+.donorTable {
+  margin-top: 5%;
+  border: 0.15em solid black;
+  width: 80%;
+}
+
+td,
+th {
+  /*margin: 5% 2% 2% 2%;*/
+  text-align: center;
+  /*padding: 2%;*/
+  border: 0.1em solid black;
+  display: table-cell;
+}
+
+.nothingMsg {
+  background-color: darkgray;
+  padding: 2%;
+  color: aliceblue;
+  margin: 5% 35% auto 35%;
+  border: 0.1em solid black;
+}

@@ -50,7 +50,7 @@ export default function UpdateDonor(props) {
             <input
               type="text"
               placeholder="Last name"
-              value={donorDetails.lname}
+              defaultValue={donorDetails.lname}
               {...register("lname", { required: true, maxLength: 50 })}
             />{" "}
           </FormGroup>
@@ -59,7 +59,7 @@ export default function UpdateDonor(props) {
             <input
               type="text"
               placeholder="Email"
-              value={donorDetails.email}
+              defaultValue={donorDetails.email}
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />{" "}
           </FormGroup>
@@ -68,7 +68,7 @@ export default function UpdateDonor(props) {
             <input
               type="tel"
               placeholder="Mobile number"
-              value={donorDetails.mobile}
+              defaultValue={donorDetails.mobile}
               {...register("mobile", {
                 required: true,
                 minLength: 6,
@@ -82,7 +82,7 @@ export default function UpdateDonor(props) {
               <Label>Blood Group : </Label>
             </center>
             <select
-              value={donorDetails.bgroup}
+              defaultValue={donorDetails.bgroup}
               {...register("bgroup", { required: true })}
             >
               <option value="O +ve">O +ve</option>
@@ -101,7 +101,7 @@ export default function UpdateDonor(props) {
               <Label>Region : </Label>
             </center>
             <select
-              value={donorDetails.area}
+              defaultValue={donorDetails.area}
               {...register("area", { required: true })}
             >
               <option value="North">North</option>

@@ -10,12 +10,13 @@ import UpdateDonor from "./UpdateDonor";
 
 export default function DonorInformation(props) {
   const [area, setArea] = useState("");
+  const [bgroup, setBgroup] = useState("");
   const [details, setDetails] = useState(null);
   const [currArray, setCurrArray] = useState(null);
   const [showUpdate, setShowUpdate] = useState(false);
   const [donorId, setDonorId] = useState(null);
   const [donor, setDonor] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   //setDetails("All");
   var upd_donor;
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function DonorInformation(props) {
       .catch(function (error) {
         console.log(error);
       });
+    if (window.sessionStorage.getItem("Admin123")) setIsAdmin(true);
   }, []);
 
   const updateUser = (id) => {
@@ -59,21 +61,61 @@ export default function DonorInformation(props) {
     let val = event.target.value;
     setArea(val);
     console.log(area);
+    //alert(val);
     /*showDonor(val);*/
     let array = details;
     if (val != "All")
       array = details.filter((item) => {
         return item.area == val;
       });
+
+    if (bgroup != "All" && bgroup != "")
+      array = array.filter((item) => {
+        return item.bgroup == bgroup;
+      });
+
+    if (array.length == 0) array = null;
+
+    setCurrArray(array);
+  };
+  const changerblood = (event) => {
+    let val = event.target.value;
+    setBgroup(val);
+    console.log(val);
+    //alert(val);
+    /*showDonor(val);*/
+    let array = details;
+    if (val != "All")
+      array = details.filter((item) => {
+        return item.bgroup == val;
+      });
+
+    if (area != "All" && area != "")
+      array = array.filter((item) => {
+        return item.area == area;
+      });
+
     if (array.length == 0) array = null;
 
     setCurrArray(array);
   };
 
+  const logoutUser = () => {
+    window.sessionStorage.removeItem("Admin123");
+    setIsAdmin(false);
+    window.location.reload(false);
+  };
   return (
     <div>
+      {isAdmin && (
+        <div>
+          <Button className="btn btn-secondary" onClick={() => logoutUser()}>
+            Logout
+          </Button>{" "}
+        </div>
+      )}
       <center>
-        <h2>Get Donors By Region</h2>
+        <h2>Get Donors By Region and Blood Group</h2>
       </center>
       <div className="area-filter">
         <div className="area-filter__control">
@@ -83,6 +125,24 @@ export default function DonorInformation(props) {
             <option value="South">South</option>
             <option value="East">East</option>
             <option value="West">West</option>
+          </select>
+        </div>
+      </div>
+      <div className="area-filter">
+        <center>
+          <label>Blood Group</label>
+        </center>
+        <div className="area-filter__control">
+          <select value={bgroup} onChange={changerblood}>
+            <option value="All">All</option>
+            <option value="O +ve">O +ve</option>
+            <option value="O -ve">O -ve</option>
+            <option value="A +ve">A +ve</option>
+            <option value="A -ve">A -ve</option>
+            <option value="B +ve">B +ve</option>
+            <option value="B -ve">B -ve</option>
+            <option value="AB +ve">AB +ve</option>
+            <option value="AB -ve">AB -ve</option>
           </select>
         </div>
       </div>
